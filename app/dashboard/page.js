@@ -1,10 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
-  const router = useRouter();
   const [user, setUser] = useState(null);
 
   // load the logged-in user from the API
@@ -17,7 +15,7 @@ export default function DashboardPage() {
   // ask the server to delete the cookie, then go to the login page
   const handleLogout = async () => {
     await fetch("/api/logout", { method: "POST" });
-    router.push("/login");
+    window.location.href = "/login"; // full page load clears the cached dashboard
   };
 
   if (!user) {

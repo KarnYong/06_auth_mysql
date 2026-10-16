@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function LoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -21,7 +19,8 @@ export default function LoginPage() {
     const data = await response.json();
 
     if (response.ok) {
-      router.push("/dashboard");
+      // full page load so proxy.js checks the new cookie (avoids a stale prefetched redirect)
+      window.location.href = "/dashboard";
     } else {
       setMessage(data.message); // "Invalid email or password"
     }
