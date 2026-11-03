@@ -23,7 +23,7 @@ export default function DashboardPage() {
 
   return (
     <div className="auth-box">
-      <h1>Dashboard</h1>
+      <h1>Auth Demo on Vercel</h1>
       <p>Welcome, {user.fullname}</p>
       <p>Email: {user.email}</p>
       <button onClick={handleLogout}>Logout</button>
